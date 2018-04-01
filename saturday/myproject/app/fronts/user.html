@@ -1,0 +1,84 @@
+
+<html>
+    <head>
+        <title>
+           Login
+        </title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+            <div class="wrapper">
+                    <div class="container">
+           
+                        <center><font color=black  size=7>USER REGISTERATION</font></marquee> </center>
+                        <br>
+                        <br>
+        <form name="form" method="post">
+          
+           
+           <input  type="text" id="fn" name="user_first" placeholder="Enter Your First Name"required >
+           <br>
+            <input type="text" id="ln" name="user_last" placeholder="Enter Your Last Name"required>  
+            <br>
+           <input type="name" id="bnk" name="bnk_name" placeholder="Enter Your Bank Name"required>
+           <br>
+            <input type="email" id="mail" name="user_mail" placeholder="Enter The Email Address"required>  
+            <br>
+            <input type="number" onkeypress="javascript:return isNumber(event)" id="blc" name="deposit" placeholder="Balance"required>  
+            <br>
+           <input type="number" onkeypress="javascript:return isNumber(event)" id="loan" name="loan"  placeholder="Loan Interest "required>
+           <br>
+           <input type="number" onkeypress="javascript:return isNumber(event)" id="fd" name="fd" placeholder="Fixed Deposit Interest"required>            
+       <br>
+                <button type="submit" onclick="register()">REGISTER</button>
+
+                </button>    
+                <br>
+                <br>
+                <pre id="hashresult"></pre>
+                <font style="" size=7>  Previous Hash : <pre id="prehashresult"></pre>
+                       
+    </form>
+</div>
+<ul class="bg-bubbles">
+<li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+</div>
+<script>
+web3.eth.defaultAccount = web3.eth.accounts[0];
+var erc20= web3.eth.contract();
+var erc2=erc20.at('0xe6c4259277e86e6a2e1072833477151a8ab8a0dd');
+var fn=document.getElementById('fn');
+var ln=document.getElementById('ln');
+var bnk=document.getElementById('bnk');
+var mail=document.getElementById('mail');
+var blc=document.getElementById('blc');
+var loan=document.getElementById('loan');
+var fd=document.getElementById('fd');
+var output=document.getElementById('hashresult');
+var preoutput=document.getElementById('prehashresult');
+function register()
+	{
+        return erc2.register(fn.value,ln.value,bnk.value,mail.value,parseInt(blc.value),parseInt(loan.value),parseInt(fd.value),function(err,res){
+                if (!err) {
+                   
+		      output.innerText = res;
+                }
+                else{
+		  
+                  output.innerHTML = "Error";
+                }
+              });
+	}
+    function isNumber(evt) {
+        var iKeyCode = (evt.which) ? evt.which : evt.keyCode
+        if (iKeyCode != 46 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57))
+            return false;
+
+        return true;
+    }  
+	
+</script>
+
+</body>
+</html>

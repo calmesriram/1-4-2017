@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>
+           Login
+        </title>
+        <link rel="stylesheet" href="../stylesheets/sty.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+            <div class="wrapper">
+                    <div class="container">
+           
+                        <center><font color=black  size=7>LOAN REQUEST</font></marquee> </center>
+                        <br>
+                        <br>
+        <form name="form">
+                <input type="number" onkeypress="javascript:return isNumber(event)" id="amt" name="amt"  placeholder="Amount "required>
+                <br>
+                <input type="number" onkeypress="javascript:return isNumber(event)" id="rt" name="rt" placeholder="Interest"required>            
+            <br>
+                     <button type="submit" onclick="register()">REQUEST</button>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                                     
+                     </button>    
+                    </form>
+                </div>
+                <ul class="bg-bubbles">
+                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+                </div>
+            </form>
+        </body>
+                <script>
+                web3.eth.defaultAccount = web3.eth.accounts[0];
+                var erc20= web3.eth.contract();
+                var rt =document.getElementById('rt');
+                var amt =document.getElementById('amt');
+                var output=document.getElementById('hashresult');
+                var preoutput=document.getElementById('prehashresult');
+                function isNumber(evt) {
+        var iKeyCode = (evt.which) ? evt.which : evt.keyCode
+        if (iKeyCode != 46 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57))
+            return false;
+
+        return true;
+    }  
+    </script>
+    </html>

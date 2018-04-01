@@ -1,0 +1,77 @@
+<html>
+        <head><center></head>
+                <meta charset="utf-8">
+                <title>test</title>
+             <style>
+            
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    position: fixed;
+    bottom:750px;
+    left: 50%;
+    margin-left: -104.5px;
+}
+button:hover {
+    opacity: 0.8;
+}
+body{
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+}
+                </style>
+                <body onload="plug()" ><br><br><br>
+                  <center>
+                    
+                   <br><br><br>
+                  <b><h1>Bank as Wallet</h1></b><br><br><br>
+                  
+                 <form action="app/fronts/bankregistration.html">
+                    <input type="submit" class="btn btn-success" value="START PROCESS"  onclick="getNavigationPage();"/>
+                 </form>
+                 </center>
+<script>
+function plug()
+{
+	 if (typeof web3 !== 'undefined')
+        {
+            web3 = new Web3(web3.currentProvider);
+            alert("Metamask Plugged in.....")
+            check();
+        }
+       else
+        {
+               alert("First You need to install meta mask");
+	       window.location.assign("https://metamask.io/")
+               return;
+        }
+}
+function check()
+{
+window.web3 = new Web3(web3.currentProvider); 
+
+ web3.eth.getAccounts(function(err, accs) {
+      if (err != null) {
+        alert("There was an error fetching your accounts.");
+        return;
+      }
+
+      if (accs.length == 0) {
+        alert("Oops! You Need to Unlock your Account.");
+        return;
+      }
+});
+}
+
+function getNavigationPage(){
+  window.location("app/fronts/bankregistration.html");
+}
+</script>
+</body>
+</html>
