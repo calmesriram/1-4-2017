@@ -1,0 +1,7 @@
+npm install -g npm
+$ npm install -g -production windows-build-tools
+$ npm install -g ethereumjs-testrpc
+$ npm install -g truffle
+after create new project folder and follow the step below
+npm install -g webpack
+truffle unbox webpack

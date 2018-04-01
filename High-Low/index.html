@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MetaCoin - Truffle Webpack Demo w/ Frontend</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="./app.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">High-Low</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#" onclick="App.broker();">Broker</a></li>
+        <li><a href="#" onclick="App.trader();" >Trader</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li id="b_stack"></li>
+        <li><label for="account">Account<input type="text" class="form-control" id="account" readonly/></label></li>
+        <li><label for="balence">Balence in ETH<input type="text" class="form-control" id="balance" readonly/></span></label></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+
+          <div class="col-sm-4" id="result" >
+
+          </div>
+          <div class="col-sm-4" id="mine_stack" >
+
+          </div>
+          <div class="col-sm-4" id="bet_list">
+
+          </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
