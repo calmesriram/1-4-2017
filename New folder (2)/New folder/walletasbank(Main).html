@@ -1,0 +1,29 @@
+<html>
+    <head>
+            <center><p><h2>Wallet as Bank </h2></p></center>
+    </head>
+    <title>
+        Welcome
+        </title>
+        <body onload="plug()">
+   
+            </body>
+            <script>
+function plug()
+ {
+	 if (typeof web3 !== 'undefined')
+        {   
+             
+            web3 = new Web3(web3.currentProvider);
+            location.href = "bankregistration.html" 
+
+        }
+       else
+        {
+               alert("install Metmask or use web3js supported browser");
+	           window.location.assign("https://metamask.io/")
+               
+        }
+}
+                </script>
+    </html>

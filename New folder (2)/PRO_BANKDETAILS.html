@@ -1,0 +1,176 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title> BANK DETAILS </title>
+<center><h3>BANK DETAILS </h3></center>
+</head>
+
+<body style = "background:pink" onload="plug()">
+
+<div><center>
+<input type ="text"name="id"placeholder="enter id"id="num"></br></br>
+<input type ="button" value="output" onclick="read()"></br></br>
+</center></div>
+
+<label name="bankname">Bank Name:</label> <input type = "text"placeholder ="bankname" id="bkname" style="height:25px;width:300px;"></br></br>
+<label name="interest">Interest:</label>  <input type = "text"placeholder ="bankint" id="bkint" style="height:25px;width:300px;"></br></br>
+
+<input type="text" name="accountaddress" placeholder="accountaddress"id="accno" style="height:25px;width:300px;">
+
+</body>
+
+
+<script>
+   function plug()
+{
+	 if (typeof web3 !== 'undefined')
+        {
+            web3 = new Web3(web3.currentProvider);
+			add();
+            //alert("Metamask Plugged in.....")
+        //     check();
+        }
+       else
+        {
+               alert("install Metmask or use web3js supported browser");
+	       window.location.assign("https://metamask.io/")
+               return;
+        }
+}
+
+function add()
+{
+	
+	 var account = web3.eth.accounts[0];
+	 var balance = web3.eth.balance
+  alert(account);
+    document.getElementById("accno").value = account;
+}
+/*function check()
+{
+window.web3 = new Web3(web3.currentProvider); 
+if (web3.currentProvider.isMetaMask === true) {
+if (typeof web3.eth.defaultAccount === 'undefined')
+ {
+         document.body.innerHTML = '<body><h1>Oops! You Need to Unlock your Account</h1></body>';   
+ }
+else
+ {
+      alert("Metamask is Unlocked");
+  }
+}
+}*/
+      web3.eth.defaultAccount = web3.eth.accounts[0];
+	 
+             var con = web3.eth.contract([
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "a",
+				"type": "address"
+			},
+			{
+				"name": "_firstname",
+				"type": "string"
+			},
+			{
+				"name": "_lastname",
+				"type": "string"
+			},
+			{
+				"name": "_bankname",
+				"type": "string"
+			},
+			{
+				"name": "_email",
+				"type": "string"
+			},
+			{
+				"name": "_intialDepositint",
+				"type": "uint256"
+			},
+			{
+				"name": "_loanint",
+				"type": "uint256"
+			},
+			{
+				"name": "_fixeddepositamount",
+				"type": "uint256"
+			}
+		],
+		"name": "register",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "a",
+				"type": "address"
+			}
+		],
+		"name": "output",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]);
+ var mycon = con.at('0x73a7d0458d59ce03b3c4bd91c4275d12821806fa');
+
+function read()
+{
+	add();
+ return mycon.output(document.getElementById('num').value,function(error,result)
+{
+    if(!error)
+  {
+//    alert(result);
+     
+    document.getElementById('bkname').value = result[2];
+    document.getElementById('bkint').value = result[6];
+ 
+  } 
+    else
+  {
+     alert(error);
+  }
+});
+}
+
+</script>
+</html>
+

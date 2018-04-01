@@ -1,0 +1,99 @@
+
+<html>
+    <head>
+            <meta charset="UTF-8">
+        <title>
+           Login
+        </title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body >
+           
+            <div class="wrapper">
+                    <div class="container">
+                            <center><h2><font color=black  size=7>Wallet as Bank</font> </h2></center>
+                            <br>
+                            <br>
+                        <center><font color=black  size=5>USER REGISTERATION</font></marquee> </center>
+                        <br>
+                        <br>
+        <form name="form" method="post">
+          
+            
+           
+           <input type="text" id="bnk" name="bnk_name" placeholder="Enter Your Bank Name"required>
+           <br>   
+           <input type="number" onkeypress="javascript:return isNumber(event)" id="loan" name="loan"  placeholder="Loan Interest "required>
+      <br>
+           <input type="number" onkeypress="javascript:return isNumber(event)" id="fd" name="fd" placeholder="Fixed Deposit Interest"required>            
+       <br>
+       <br>
+           <input type="number" onkeypress="javascript:return isNumber(event)" id="dir" name="dir" placeholder="Deposit Interest Rate"required>            
+       <br>
+                <button type="submit" onclick="calc()">REGISTER</button>
+
+                </button>    
+                <br>
+                <br>
+                      
+    </form>
+</div>
+<ul class="bg-bubbles">
+<li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+</div>
+<script>
+ function calc()
+ {
+    var ln;
+    
+            ln = document.getElementById('loan').value.toString("####0.00");
+        alert(ln);
+     var fd;
+         fd = document.getElementById('fd').value;
+        fd = fd*100;
+       // fd.toFixed(2);
+        alert(fd);
+     var dir;
+        dir = document.getElementById('dir').value;
+        dir = dir*100;
+       // dir.toFixed(2); 
+     alert(dir);
+ }
+
+web3.eth.defaultAccount = web3.eth.accounts[0];
+var erc20= web3.eth.contract();
+var erc2=erc20.at('0xe6c4259277e86e6a2e1072833477151a8ab8a0dd');
+var Accno= web3.eth.accounts[0];
+var bnk=document.getElementById('bnk');
+var loan=document.getElementById('loan');
+var fd=document.getElementById('fd');
+
+function register()
+	{
+
+        return erc2.register(bnk.value,parseInt(loan.value),parseInt(fd.value),function(err,res){
+                if (!err) {
+                   
+		      output.innerText = res;
+                }
+                else{
+		  
+                  output.innerHTML = "Error";
+                }
+              });
+	}
+    function isNumber(evt) {
+        
+      
+        var iKeyCode = (evt.which) ? evt.which : evt.keyCode
+        if (iKeyCode != 46 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57))
+            return false;
+
+        return true;
+    }  
+	
+</script>
+
+</body>
+</html>

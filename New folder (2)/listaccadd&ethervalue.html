@@ -1,0 +1,30 @@
+<html>
+    <head>
+        ACCOUNT ADDRESS AND ETHER AMOUNT
+    <title>
+        account add and ether amount
+        </title>
+        </head>
+        <body>
+            </br></br><center>
+            <input type="text" id="accno" placeholder="accno" style="height:30px;width:500px;"></br></br>
+            <input type="text" id="accbal" placeholder="accbal"style="height:30px;width:500px;"></br></br>
+            <input type="button" value="get"   onclick="accno()" style="height:30px;width:80px;"></center>
+            </body>
+            <script>
+                function accno()
+                {
+                    var accounts = web3.eth.accounts;
+                    console.log(accounts); 
+                    var balance = web3.eth.getBalance("0x780c8c8b991905a3da35b3c655fe8bcd196f36e8");
+                    console.log(balance);
+                    //var accno = web3.eth.accounts[0]; 
+                    //var bal =  web3.eth.getBalance(accno);//web3.eth.balance;
+                    //document.getElementById('accno').value = accno;
+                    //document.getElementById('accbal').value = bal;
+                   
+                }
+                   
+                   
+                </script>
+</html>

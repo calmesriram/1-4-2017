@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+    <head>
+        <title>
+           Registration from
+        </title>
+       
+    </head>
+    <body>
+         
+<style>
+input
+{    height:30px;
+      width:300px;
+}
+
+</style>
+           <center><h3>USER REGISTERATION FORM </h3></center>
+
+  <div><center>
+           
+             </br></br></br></br></br></br>
+            <input type="number" id="num" name="mynumber" placeholder="inital zero or >0"required></br></br>
+            <input type="text" id="fn" name="user_first" placeholder="Enter your First name"required></br></br>
+            <input type="text" id="ln" name="user_last" placeholder="Enter your last name"required></br></br> 
+            <input type="name" id="bnk" name="bnk_name" placeholder="Enter your Bank Name"required></br></br>
+            <input type="email" id="mail" name="user_mail" placeholder="Enter your Email adress"required></br></br>
+            <input type="number" id="deposit" name="deposit" placeholder="Enter Initial Deposit Value"required></br></br>
+            <input type="number" id="loan" name="loan" placeholder="Enter the Interest Value"required></br></br>
+            <input type="number" id="fd" name="fd" placeholder="Enter the Interest Value"required></br></br>
+
+            <input type="button"value="REGISTER" style ="height:30px;width:80px;"onclick="save()">
+    
+   </center></div>       
+   
+        </body>
+
+<script>
+
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+     
+         var con = web3.eth.contract([
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "a",
+				"type": "address"
+			},
+			{
+				"name": "_firstname",
+				"type": "string"
+			},
+			{
+				"name": "_lastname",
+				"type": "string"
+			},
+			{
+				"name": "_bankname",
+				"type": "string"
+			},
+			{
+				"name": "_email",
+				"type": "string"
+			},
+			{
+				"name": "_intialDepositint",
+				"type": "uint256"
+			},
+			{
+				"name": "_loanint",
+				"type": "uint256"
+			},
+			{
+				"name": "_fixeddepositamount",
+				"type": "uint256"
+			}
+		],
+		"name": "register",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "a",
+				"type": "address"
+			}
+		],
+		"name": "output",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]);
+
+     var mycon = con.at('0x73a7d0458d59ce03b3c4bd91c4275d12821806fa');
+function save()
+{
+    return mycon.register(document.getElementById('num').value,document.getElementById('fn').value,document.getElementById('ln').value,document.getElementById('bnk').value,document.getElementById('mail').value,document.getElementById('deposit').value,document.getElementById('loan').value,document.getElementById('fd').value,function(error,result)
+{
+   if(!error)
+   {
+     alert(result);
+  //<a href="PRO_BANKDETAILS.html"></a>
+   location.href = "PRO_BANKDETAILS.html"   
+}
+  else
+   {
+     alert(error);
+   }
+});
+}
+
+
+</script>
+</html>

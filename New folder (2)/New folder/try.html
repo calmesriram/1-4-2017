@@ -1,0 +1,107 @@
+<html>
+<head>
+head
+<title>
+  title
+</title>
+</head>
+<body>
+
+<textarea rows="20" cols="50" id="txtdata">
+</textarea>
+ <input type="button" value="load" onclick="Read()">
+
+</body>
+<script>
+   web3.eth.defaultAccount = web3.eth.accounts[0];
+    var con = web3.eth.contract([
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "a",
+				"type": "address"
+			},
+			{
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"name": "name",
+				"type": "string"
+			}
+		],
+		"name": "input",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "a",
+				"type": "address"
+			}
+		],
+		"name": "output",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]);
+ var addcon = con.at('0x9b8c1a1b0cd95dec839d93812ada0f1279da6d7c');
+		 if(web3.isConnected())
+			{
+ 			  console.log("ok");
+			}
+			else
+			{
+			  console.log("no");
+			}
+
+
+
+  function Read()
+  {
+	data="Listing Names.....";
+    for(r=0;r<3;r++)
+    {
+        get(r);
+       
+     }
+  }
+var data;	
+
+  function get(num)
+{
+ return addcon.output(num,function(error,result){
+
+	if(!error)
+		{
+			if(result[1]!=undefined)
+			{
+				data=data+"\n"+result[1];
+			}
+			document.getElementById('txtdata').value = data;
+			
+		}
+		else
+		{
+			alert(error);
+		}
+	});
+}
+</script>
+</html>
